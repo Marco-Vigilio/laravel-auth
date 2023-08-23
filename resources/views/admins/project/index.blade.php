@@ -14,12 +14,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Mark</td>
-                    </tr>
+                    @foreach ($projects as $project)
+                        <tr>
+                            <th>
+                                {{ $project->id}}
+                            </th>
+                            <td>
+                                <strong>
+                                {{ $project->title}}
+                                </strong>
+                            </td>
+                            <td>
+                                {{ $project->slug}}
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-sm btn-primary">
+                                    View
+                                </a>
+                                <a href="" class="btn btn-sm btn-success">
+                                    Edit
+                                </a>
+                                <a href="" class="btn btn-sm btn-warning">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+
+            {{ $projects->links()}}
         </div>
     </div>
 </div>
