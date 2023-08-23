@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\ProjectController as ProjectController;
 use App\Http\Controllers\Guest\GuestController as GuestController;
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ Auth::routes();
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::get('/', [AdminDashboardController::class, 'home'])->name('home');
+    Route::resource("/projects", ProjectController::class);
 });
 
 Route::name('guest.')->group(function(){
