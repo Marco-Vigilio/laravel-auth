@@ -32,11 +32,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        
-        dd($request->all());
-        /*
         $data = $request->validate([
-            'title'=> ['required', 'unique:post', 'min:10', 'max:255'],
+            'title'=> ['required', 'unique:projects', 'min:10', 'max:255'],
             'image'=> ['url:https'],
             'content'=> ['required', 'min:10'],
         ]);
@@ -44,8 +41,8 @@ class ProjectController extends Controller
         $data['slug'] = Str::of($data['title'])->slug('-');
         $newProject = Project::create($data);
 
-        return redirect()->route('admins.project.index');
-        */
+        return redirect()->route('admin.projects.index');
+        
     }
 
     /**

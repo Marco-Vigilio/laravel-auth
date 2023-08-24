@@ -28,13 +28,13 @@
                                 {{ $project->slug}}
                             </td>
                             <td>
-                                <a href="" class="btn btn-sm btn-primary">
+                                <a href="{{ route('admin.projects.show', $project->id)}}" class="btn btn-sm btn-primary">
                                     View
                                 </a>
-                                <a href="" class="btn btn-sm btn-success">
+                                <a href="{{ route('admin.projects.edit', $project->id)}}" class="btn btn-sm btn-success">
                                     Edit
                                 </a>
-                                <a href="" class="btn btn-sm btn-warning">
+                                <a href="{{ route('admin.projects.show', $project->id)}}" class="btn btn-sm btn-warning">
                                     Delete
                                 </a>
                             </td>
