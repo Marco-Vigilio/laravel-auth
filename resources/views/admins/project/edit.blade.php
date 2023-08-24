@@ -24,10 +24,7 @@
                 <label for="exampleFormControlInput" class="form-label">
                     Image
                 </label>
-                <!--
-                <input type="text" class="form-control" id="image" placeholder="https://image.jpg" name="image" value="{{ $project->image}}">
-                -->
-                <input type="file" name="image" id="image" class="form-control">
+                <input type="file" name="image" id="image" class="form-control" value="{{ old('image', '')}}">
             </div>
             @error('content')
                 <div class="alert alert-danger">{{ $message }}</div>

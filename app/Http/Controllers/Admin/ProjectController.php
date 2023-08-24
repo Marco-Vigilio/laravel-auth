@@ -42,9 +42,11 @@ class ProjectController extends Controller
             'content'=> ['required', 'min:10'],
         ]);
 
-        $img_path = Storage::put('uploads/image', $request['image']);//salvo l'immagine preso in uploads e la metto nella storage
-
-        $data['image'] = $img_path;
+        if ($request->hasFile('image')){
+            $img_path = Storage::put('uploads/image', $request['image']);//salvo l'immagine preso in uploads e la metto nella storage
+            $data['image'] = $img_path;
+        }
+        
         $data['slug'] = Str::of($data['title'])->slug('-');
         $newProject = Project::create($data);
 
@@ -76,9 +78,15 @@ class ProjectController extends Controller
         //validazione dei dati
         $data = $request->validate([
             'title'=> ['required', 'min:10', 'max:255', Rule::unique('projects')->ignore($project->id)],
-            'image'=> ['url:https'],
+            'image'=> ['image'],
             'content'=> ['required', 'min:10'],
         ]);
+
+        if ($request->hasFile('image')){
+            Storage::delete($project->image);
+            $img_path = Storage::put('uploads/image', $request['image']);//salvo l'immagine preso in uploads e la metto nella storage
+            $data['image'] = $img_path;
+        }
 
         $data['slug'] = Str::of($data['title'])->slug('-');
 
@@ -94,6 +102,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        Storage::delete($project->image);
         $project->delete();
         return redirect()->route('admin.projects.index');
     }
