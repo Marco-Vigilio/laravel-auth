@@ -35,13 +35,14 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        $img_path = Storage::put('uploads', $request['image']);//salvo l'immagine preso in uploads e la metto nella storage
 
         $data = $request->validate([
             'title'=> ['required', 'unique:projects', 'min:10', 'max:255'],
-            //'image'=> ['file'],
+            'image'=> ['required', 'image'],
             'content'=> ['required', 'min:10'],
         ]);
+
+        $img_path = Storage::put('uploads/image', $request['image']);//salvo l'immagine preso in uploads e la metto nella storage
 
         $data['image'] = $img_path;
         $data['slug'] = Str::of($data['title'])->slug('-');
