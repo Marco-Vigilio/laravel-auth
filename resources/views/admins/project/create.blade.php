@@ -4,7 +4,7 @@
 <div class="container" id="projects-conteiner">
     <div class="row justify-content-center">
         <div class="col-12">
-            <form action="{{ route('admin.projects.store')}}" method="POST">
+            <form action="{{ route('admin.projects.store')}}" method="POST" >
             @csrf
             
             @error('title')
@@ -14,7 +14,7 @@
                 <label for="exampleFormControlInput" class="form-label">
                     Title
                 </label>
-                <input type="text" class="form-control" id="title" placeholder="Insert your project title" name="title" value="{{ old('title', $project->title)}}">
+                <input type="text" class="form-control" id="title" placeholder="Insert your project title" name="title" value="{{ old('title', '')}}">
             </div>
             @error('image')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -23,7 +23,7 @@
                 <label for="exampleFormControlInput" class="form-label">
                     Image
                 </label>
-                <input type="text" class="form-control" id="image" placeholder="https://image.jpg" name="image" value="{{ old('image', $project->image)}}">
+                <input type="text" class="form-control" id="image" placeholder="https://image.jpg" name="image" value="{{ old('image', '')}}">
             </div>
             @error('content')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -32,7 +32,7 @@
                 <label for="content" class="form-label">
                     Content
                 </label>
-                <textarea class="form-control" id="content" rows="7" name="content" value="{{ old('content', $project->content)}}"></textarea>
+                <textarea class="form-control" id="content" rows="7" name="content" value="{{ old('content', '')}}"></textarea>
             </div>
 
             <div class="mb-3">
