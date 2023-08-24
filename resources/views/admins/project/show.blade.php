@@ -14,7 +14,7 @@
                     <p class="card-text">
                         {{ $project->content }}
                     </p>
-                    <a href="" class="btn btn-sm btn-success">
+                    <a href="{{ route('admin.projects.edit', $project)}}" class="btn btn-sm btn-success">
                         Edit
                     </a>
                     <form class="d-inline-block" action="" method="POST">
