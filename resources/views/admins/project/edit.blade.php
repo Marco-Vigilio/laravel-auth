@@ -4,7 +4,7 @@
 <div class="container" id="projects-conteiner">
     <div class="row justify-content-center">
         <div class="col-12">
-            <form action="{{ route('admin.projects.update', $project->id)}}" method="POST">
+            <form action="{{ route('admin.projects.update', $project->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             
@@ -24,7 +24,10 @@
                 <label for="exampleFormControlInput" class="form-label">
                     Image
                 </label>
+                <!--
                 <input type="text" class="form-control" id="image" placeholder="https://image.jpg" name="image" value="{{ $project->image}}">
+                -->
+                <input type="file" name="image" id="image" class="form-control">
             </div>
             @error('content')
                 <div class="alert alert-danger">{{ $message }}</div>
